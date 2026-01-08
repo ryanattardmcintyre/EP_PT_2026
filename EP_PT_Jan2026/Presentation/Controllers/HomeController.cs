@@ -18,6 +18,11 @@ namespace Presentation.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            return Content("test");
+        }
+
         public IActionResult Privacy()
         {
             return View();
