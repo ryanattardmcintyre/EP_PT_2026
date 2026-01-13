@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         //3. Context.Forms[...]
 
         public IActionResult Search(string keyword)
-        { 
+        {
             //search in the database for products starting with keyword
 
 
@@ -27,6 +27,8 @@ namespace Presentation.Controllers
             //5. ViewData
             //6. Session
             //....
+
+            
 
             ViewBag.Message = "No products were found with this " + keyword;
 
