@@ -19,10 +19,14 @@ namespace Common.Models
 
     public class Product
     {
+        public Product()
+        { Stock = 1; }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        
+
         [StringLength(200)]
+        [Required]
         public string Name { get; set; }
 
         [ForeignKey("Category")] //we link the two properties together so at runtime, Category (Navigational Property)
@@ -30,12 +34,14 @@ namespace Common.Models
         public int CategoryFK { get; set; }
         public virtual Category Category { get; set; } //myProduct.Category.Id
 
+        
         public double Price { get; set; }
 
         [StringLength(1000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
+       
         public int Stock { get; set; }
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
 
     }
 }
