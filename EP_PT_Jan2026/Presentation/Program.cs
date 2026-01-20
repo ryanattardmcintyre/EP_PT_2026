@@ -1,7 +1,7 @@
 using DataAccess.Context;
+using DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Presentation.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ShoppingCartDbContext>();
 
 builder.Services.AddControllersWithViews();
+
+//Scoped Service => a different instance is created for every request
+//Singleton Service => one instance to be shared by everyone
+
+//builder.Services.AddScoped(typeof(ProductsRepository));
+builder.Services.AddScoped<ProductsRepository>();
 
 var app = builder.Build();
 

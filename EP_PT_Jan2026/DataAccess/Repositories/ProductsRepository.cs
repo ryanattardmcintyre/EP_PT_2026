@@ -49,6 +49,15 @@ namespace DataAccess.Repositories
             _myContext.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            var productToDelete = Get(id);
+            if(productToDelete != null)
+            {
+                Delete(productToDelete);
+            }
+        }
+
         public Product? Get(int id) {
             return _myContext.Products.SingleOrDefault(x => x.Id == id); //lambda expression, shorthand notation replacing a foreach loop
         }
