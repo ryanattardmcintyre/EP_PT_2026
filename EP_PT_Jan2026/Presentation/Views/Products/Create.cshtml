@@ -1,45 +1,49 @@
-﻿@model Common.Models.Product
+﻿@model Presentation.Models.ProductsCreateViewModel
 
 <form method="post" action="/Products/Submit" class="container mt-4">
     <div class="mb-3">
         <label for="Name" class="form-label">Name</label>
         <input type="text"
-               name="Name"
-               id="Name"
-               class="form-control" />
+        name="Product.Name"
+        id="Name"
+        class="form-control" />
     </div>
 
     <div class="mb-3">
         <label for="Price" class="form-label">Price (EUR)</label>
         <input type="number"
-               name="Price"
-               id="Price"
-               step="0.01"
-               class="form-control" />
+        name="Product.Price"
+        id="Price"
+        step="0.01"
+        class="form-control" />
     </div>
 
     <div class="mb-3">
         <label for="Description" class="form-label">Description</label>
-        <textarea name="Description"
-                  id="Description"
-                  rows="5"
-                  class="form-control"></textarea>
+        <textarea name="Product.Description"
+        id="Description"
+        rows="5"
+        class="form-control"></textarea>
     </div>
 
     <div class="mb-3">
         <label for="Stock" class="form-label">Stock</label>
         <input type="number"
-               name="Stock"
-               id="Stock"
-               class="form-control" />
+        name="Product.Stock"
+        id="Stock"
+        class="form-control" />
     </div>
 
     <div class="mb-3">
         <label for="CategoryFK" class="form-label">Category</label>
-        <input type="number"
-               name="CategoryFK"
-               id="CategoryFK"
-               class="form-control" />
+        <select name="Product.CategoryFK" class="form-control">
+            <option value="-1">Select Category</option>
+            @foreach(var category in Model.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+
     </div>
 
     <button type="submit" class="btn btn-primary">

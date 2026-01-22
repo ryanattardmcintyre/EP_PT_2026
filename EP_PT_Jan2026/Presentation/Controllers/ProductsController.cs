@@ -1,19 +1,21 @@
 ﻿using Common.Models;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Models;
 
 namespace Presentation.Controllers
 {
     public class ProductsController : Controller
     {
-        //private ProductsRepository _productsRepository;
-        //public ProductsController(ProductsRepository pr) //requesting an instance of type PRODUCTSREPOSITORY
-        //{
-        //    _productsRepository = pr;
-        //}
+        private CategoriesRepository _categoriesRepository;
+        public ProductsController(CategoriesRepository categoriesRepository) //requesting an instance of type PRODUCTSREPOSITORY
+        {
+            _categoriesRepository = categoriesRepository;
+        }
 
         public IActionResult Index()
         {
+      
             return View();
         }
 
@@ -33,19 +35,43 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult Create() //this is triggered upon the user clicks the link Create
         {
-            return View(); //mvc will return a view from the folder VIEW which should be located under a subfolder called Products with the name Create()
+            var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+
+            ProductsCreateViewModel myModel = new ProductsCreateViewModel();
+            myModel.Categories = myPreparedSqlOfCategories.ToList(); //opens connection - gets data - closes connection
+            //myModel.Product = new Product();
+
+            return View(myModel); //mvc will return a view from the folder VIEW which should be located under a subfolder called Products with the name Create()
         }
 
+
+        //to explain:
+
+        //what happens when there's an error ...redirection!
+        //validations
+        //revise registration of CategoriesRepository....
+
         [HttpPost]
-        public IActionResult Submit(Product p, [FromServices] ProductsRepository _productsRepository)
+        public IActionResult Submit(ProductsCreateViewModel p, [FromServices] ProductsRepository _productsRepository)
         {
             //Add the product keyed in by the user into the database
             //note: no LINQ code
-            _productsRepository.Add(p);
-            TempData["success"] = "Product was added successfully";
+            try
+            {
+                _productsRepository.Add(p.Product);
+                //...
+                TempData["success"] = "Product was added successfully";
+                return View("Index"); //redirecting the user server-side
+                //return RedirectToAction("Index"); 
+                //client-side redirection //https://localhost:xxxx/Products/Index ViewBag won't work; but TempData will
+            }
+            catch (Exception ex) 
+            {
+                //log ex.Message
+                TempData["error"] = "Product failed to be added";
 
-
-            return View("Index");
+                return View("Create");
+            }
 
         }
 
