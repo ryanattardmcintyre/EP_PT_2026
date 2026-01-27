@@ -1,6 +1,7 @@
 ﻿using Common.Models;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Presentation.Models;
 
 namespace Presentation.Controllers
@@ -8,15 +9,23 @@ namespace Presentation.Controllers
     public class ProductsController : Controller
     {
         private CategoriesRepository _categoriesRepository;
-        public ProductsController(CategoriesRepository categoriesRepository) //requesting an instance of type PRODUCTSREPOSITORY
+        private ProductsRepository _productsRepository;
+        public ProductsController(CategoriesRepository categoriesRepository, ProductsRepository productsRepository) //requesting an instance of type PRODUCTSREPOSITORY
         {
             _categoriesRepository = categoriesRepository;
+            _productsRepository = productsRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, int pageSize = 6)
         {
-      
-            return View();
+            //the term models is used for object types that transport data to/from views to/from the controller
+
+            var list = _productsRepository.Get().Skip((page - 1)*pageSize).Take(pageSize);
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalItemsFetched = list.Count();
+            ViewBag.PageSize = pageSize;
+
+            return View(list); //model: IQueryable<Product>
         }
 
         //roles of
@@ -52,7 +61,7 @@ namespace Presentation.Controllers
         //revise registration of CategoriesRepository....
 
         [HttpPost]
-        public IActionResult Submit(ProductsCreateViewModel p, [FromServices] ProductsRepository _productsRepository)
+        public IActionResult Submit(ProductsCreateViewModel p)
         {
             //Add the product keyed in by the user into the database
             //note: no LINQ code
@@ -81,10 +90,10 @@ namespace Presentation.Controllers
         //2. Models
         //3. Context.Forms[...]
 
+        
         public IActionResult Search(string keyword)
         {
             //search in the database for products starting with keyword
-
 
             //Note: Ways of passing data from Controller => View
             //1. ViewBag => dynamic object, whatever i store inside doesn't survive a redirection
@@ -95,13 +104,23 @@ namespace Presentation.Controllers
             //6. Session
             //....
 
-            
 
-            ViewBag.Message = "No products were found with this " + keyword;
+            //Notes on deferred execution (i.e. using the IQueryable)
+            //Get() => 1st call
+            //Where() => 2nd call
+            //OrderBy() => 3rd call
 
+            //because of IQueryable()
+            //after 1st call => Select * From Products
+            //after 2nd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%'
+            //after 3rd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%' order by Name asc
+
+            var list = _productsRepository.Get().Where(p => p.Name.Contains(keyword)
+                                                 || p.Description.Contains(keyword))
+                        .OrderBy(p=> p.Name).ToList();
 
             //YOU control where the user is redirected after the method completes
-            return View("Index");
+            return View("Index", list);
             //by default => View() it will seek a View called same as the action name i.e. Products\Search.cshtml
             //to redirect the user to a different-named view we use return View("nameOfTheOtherView");
 

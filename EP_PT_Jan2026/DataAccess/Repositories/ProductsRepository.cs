@@ -62,5 +62,12 @@ namespace DataAccess.Repositories
             return _myContext.Products.SingleOrDefault(x => x.Id == id); //lambda expression, shorthand notation replacing a foreach loop
         }
 
+        public IQueryable<Product> Get()
+        {
+            return _myContext.Products; //Select * From Products
+        }
+
+
+
     }
 }
