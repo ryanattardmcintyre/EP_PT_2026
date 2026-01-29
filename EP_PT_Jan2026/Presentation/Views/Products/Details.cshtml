@@ -1,0 +1,38 @@
+﻿@model Common.Models.Product
+ 
+<h2>Product Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">Name:</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt class="col-sm-3">Category:</dt>
+    <dd class="col-sm-9">
+        @(Model.Category != null ? Model.Category.Name : "—")
+    </dd>
+
+    <dt class="col-sm-3">Price:</dt>
+    <dd class="col-sm-9">€ @Model.Price</dd>
+
+    <dt class="col-sm-3">Description:</dt>
+    <dd class="col-sm-9">
+        @(string.IsNullOrWhiteSpace(Model.Description) ? "—" : Model.Description)
+    </dd>
+
+    <dt class="col-sm-3">Stock:</dt>
+    <dd class="col-sm-9">@Model.Stock</dd>
+
+    <dt class="col-sm-3">Image:</dt>
+    <dd class="col-sm-9">
+        @if (string.IsNullOrEmpty(Model.ImagePath))
+        {
+            <img src="/images/default.jpg" class="img-fluid" style="max-width:200px;" />
+        }
+        else
+        {
+            <img src="@Model.ImagePath" class="img-fluid" style="max-width:200px;" />
+        }
+    </dd>
+</dl>
+
+<a asp-action="Index" class="btn btn-secondary">Back to list</a>

@@ -19,13 +19,23 @@ namespace Presentation.Controllers
         public IActionResult Index(int page = 1, int pageSize = 6)
         {
             //the term models is used for object types that transport data to/from views to/from the controller
-
+           
+         
+            
+            //info 2: list of products
             var list = _productsRepository.Get().Skip((page - 1)*pageSize).Take(pageSize);
             ViewBag.CurrentPage = page;
             ViewBag.TotalItemsFetched = list.Count();
             ViewBag.PageSize = pageSize;
 
-            return View(list); //model: IQueryable<Product>
+            //info 1: list of categories
+            var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+            ProductsListViewModel myModel = new ProductsListViewModel();
+            myModel.Products = list.ToList();
+
+            myModel.Categories = myPreparedSqlOfCategories.ToList();
+
+            return View(myModel); //model: IQueryable<Product>
         }
 
         //roles of
@@ -91,7 +101,7 @@ namespace Presentation.Controllers
         //3. Context.Forms[...]
 
         
-        public IActionResult Search(string keyword)
+        public IActionResult Search(string keyword, int category, int page = 1, int pageSize = 6)
         {
             //search in the database for products starting with keyword
 
@@ -102,8 +112,6 @@ namespace Presentation.Controllers
             //4. Cookies
             //5. ViewData
             //6. Session
-            //....
-
 
             //Notes on deferred execution (i.e. using the IQueryable)
             //Get() => 1st call
@@ -115,17 +123,48 @@ namespace Presentation.Controllers
             //after 2nd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%'
             //after 3rd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%' order by Name asc
 
+
             var list = _productsRepository.Get().Where(p => p.Name.Contains(keyword)
-                                                 || p.Description.Contains(keyword))
-                        .OrderBy(p=> p.Name).ToList();
+                                                 || p.Description.Contains(keyword)
+                                                  );
+
+            if (category > 0) list = list.Where(x => x.CategoryFK == category);
+              
+            list = list.OrderBy(p=> p.Name).Skip((page - 1) * pageSize).Take(pageSize);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalItemsFetched = list.Count();
+            ViewBag.PageSize = pageSize;
 
             //YOU control where the user is redirected after the method completes
-            return View("Index", list);
+
+            //info 1: list of categories
+            var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+            ProductsListViewModel myModel = new ProductsListViewModel();
+            myModel.Products = list.ToList();
+
+            myModel.Categories = myPreparedSqlOfCategories.ToList();
+
+            return View("Index", myModel);
             //by default => View() it will seek a View called same as the action name i.e. Products\Search.cshtml
             //to redirect the user to a different-named view we use return View("nameOfTheOtherView");
 
 
         }
+
+        public IActionResult Details(int id)
+        {
+            var product = _productsRepository.Get(id);
+         
+            if (product == null)
+                {
+                TempData["error"] = "Product does not exist";
+                return RedirectToAction("Index"); //it will redirect the end user to the action (above) called Index
+                }
+            else return View(product);
+
+        }
+
 
 
     }

@@ -20,6 +20,6 @@ namespace Common.Models
         public string Username { get; set; }
         public DateTime DataPlaced { get; set; }
         public double FinalPrice { get; set; }
-        public IQueryable<OrderItem> OrderItems { get; set; }
+        public virtual IQueryable<OrderItem> OrderItems { get; set; }
     }
 }

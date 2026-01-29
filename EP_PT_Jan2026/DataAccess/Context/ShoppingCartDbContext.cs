@@ -28,5 +28,10 @@ namespace DataAccess.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies(); //lazy loading => loads the data in the navigational properties automatically
+        }
     }
 }

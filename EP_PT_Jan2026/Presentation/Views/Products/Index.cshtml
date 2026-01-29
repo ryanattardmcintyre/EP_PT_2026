@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Common.Models.Product>
+﻿@model Presentation.Models.ProductsListViewModel
 
 <h1>Products Catalogue</h1>
 
@@ -10,7 +10,18 @@
         <table>
             <tr>
                 <td>Search for product</td>
-                <td><input type="text" class="form-control" name="keyword" /></td>
+                <td>
+                    <input type="text" class="form-control" name="keyword" />
+
+                    <select name="category" class="form-control">
+                        <option value="-1">Any category</option>
+                        @foreach(var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                
+                </td>
             </tr>
         </table>
 
@@ -19,16 +30,10 @@
 </form>
 
 
-@if(ViewBag.Message != null)
-{
-    <p style="color:red">@ViewBag.Message</p>
-}
-
-
 <hr />
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach (var product in Model)
+    @foreach (var product in Model.Products)
     {
         <div class="col">
             <div class="card h-100 shadow-sm">
