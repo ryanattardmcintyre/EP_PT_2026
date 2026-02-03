@@ -44,6 +44,23 @@ namespace DataAccess.Repositories
             }
         }
 
+        public void Update(Product updatedProduct)
+        {
+            var originalProduct =  Get(updatedProduct.Id);
+            if (originalProduct != null) 
+            {
+                originalProduct.Price = updatedProduct.Price;
+                originalProduct.CategoryFK = updatedProduct.CategoryFK;
+                originalProduct.ImagePath = updatedProduct.ImagePath;
+                originalProduct.Description = updatedProduct.Description;
+                originalProduct.Stock = updatedProduct.Stock;
+                originalProduct.Name = updatedProduct.Name;
+
+                _myContext.SaveChanges();
+            }
+
+        }
+
         public void Delete (Product product)
         {
             _myContext.Products.Remove(product);

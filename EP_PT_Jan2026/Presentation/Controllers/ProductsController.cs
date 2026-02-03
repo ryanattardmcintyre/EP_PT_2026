@@ -19,8 +19,17 @@ namespace Presentation.Controllers
         public IActionResult Index(int page = 1, int pageSize = 6)
         {
             //the term models is used for object types that transport data to/from views to/from the controller
-           
-         
+
+
+            if (TempData["keyword"] != null || TempData["category"] != null)
+            {
+                //it means that next was pressed in search mode
+                string keyword = TempData["keyword"] != null ? TempData["keyword"].ToString() : "";
+                int category = TempData["category"] != null ? Convert.ToInt32(TempData["category"]) : -1;
+
+
+                return Search(keyword,category, page, pageSize);
+            }
             
             //info 2: list of products
             var list = _productsRepository.Get().Skip((page - 1)*pageSize).Take(pageSize);
@@ -71,17 +80,35 @@ namespace Presentation.Controllers
         //revise registration of CategoriesRepository....
 
         [HttpPost]
-        public IActionResult Submit(ProductsCreateViewModel p)
+        public IActionResult Submit(ProductsCreateViewModel p, [FromServices] IWebHostEnvironment host)
         {
             //Add the product keyed in by the user into the database
             //note: no LINQ code
             try
             {
+                if (p.ImageFile != null)
+                {
+                    string uniqueFilename = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(p.ImageFile.FileName);
+
+                    //we save the physical file using the absolute path //C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot
+                    string absolutePath = host.WebRootPath + "//images//" + uniqueFilename;
+
+                    using (var fs = new FileStream(absolutePath, FileMode.CreateNew, FileAccess.Write))
+                    {
+                        p.ImageFile.CopyTo(fs);
+                    }
+
+                    //relative Path is used to render images in the browser
+                    string relativePath = @"\images\" + uniqueFilename;
+                    p.Product.ImagePath = relativePath;
+                }
+
                 _productsRepository.Add(p.Product);
                 //...
                 TempData["success"] = "Product was added successfully";
-                return View("Index"); //redirecting the user server-side
-                //return RedirectToAction("Index"); 
+                
+                //return View("Index"); //redirecting the user server-side
+                return RedirectToAction("Index"); 
                 //client-side redirection //https://localhost:xxxx/Products/Index ViewBag won't work; but TempData will
             }
             catch (Exception ex) 
@@ -123,6 +150,7 @@ namespace Presentation.Controllers
             //after 2nd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%'
             //after 3rd call => Select * From Products Where Name like '%keyword%' or Description Like '%description%' order by Name asc
 
+            if (keyword == null) keyword = "";
 
             var list = _productsRepository.Get().Where(p => p.Name.Contains(keyword)
                                                  || p.Description.Contains(keyword)
@@ -144,6 +172,10 @@ namespace Presentation.Controllers
             myModel.Products = list.ToList();
 
             myModel.Categories = myPreparedSqlOfCategories.ToList();
+
+            
+            TempData["keyword"] = keyword;
+            TempData["category"] = category;
 
             return View("Index", myModel);
             //by default => View() it will seek a View called same as the action name i.e. Products\Search.cshtml
