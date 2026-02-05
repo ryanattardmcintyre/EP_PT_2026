@@ -10,10 +10,13 @@ namespace Presentation.Controllers
     {
         private CategoriesRepository _categoriesRepository;
         private ProductsRepository _productsRepository;
-        public ProductsController(CategoriesRepository categoriesRepository, ProductsRepository productsRepository) //requesting an instance of type PRODUCTSREPOSITORY
+        private OrdersRepository _ordersRepository;
+        public ProductsController(CategoriesRepository categoriesRepository, ProductsRepository productsRepository
+            , OrdersRepository ordersRepository) //requesting an instance of type PRODUCTSREPOSITORY
         {
             _categoriesRepository = categoriesRepository;
             _productsRepository = productsRepository;
+            _ordersRepository = ordersRepository;
         }
 
         public IActionResult Index(int page = 1, int pageSize = 6)
@@ -197,6 +200,101 @@ namespace Presentation.Controllers
 
         }
 
+
+        [HttpGet]
+        public IActionResult Edit(int? productId)
+        {
+            if(productId == null)
+            {
+                TempData["error"] = "Invalid request";
+                return RedirectToAction("Index");
+            }
+            
+            else
+            {
+                var originalProduct = _productsRepository.Get(productId.Value);
+                if (originalProduct == null) {
+                    TempData["error"] = "Product does not exist";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+
+                    ProductsCreateViewModel myModel = new ProductsCreateViewModel();
+                    myModel.Categories = myPreparedSqlOfCategories.ToList();
+                    myModel.Product = originalProduct;
+                    
+                    return View(myModel); //means => it is going to look for a page named Edit.cshtml
+                }
+            }
+
+        }
+
+        [HttpPost]
+        public IActionResult Update(ProductsCreateViewModel p, [FromServices] IWebHostEnvironment host)
+        {
+            try
+            {
+                if (p.ImageFile != null)
+                {
+                    string uniqueFilename = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(p.ImageFile.FileName);
+
+                    string absolutePath = host.WebRootPath + "//images//" + uniqueFilename;
+
+                    using (var fs = new FileStream(absolutePath, FileMode.CreateNew, FileAccess.Write))
+                    {
+                        p.ImageFile.CopyTo(fs);
+                    }
+
+                    string relativePath = @"\images\" + uniqueFilename;
+                    p.Product.ImagePath = relativePath;
+
+
+                    //delete the old image
+                    var myOldProduct = _productsRepository.Get(p.Product.Id);
+                    string absolutePathOfTheImageToDelete = host.WebRootPath + myOldProduct.ImagePath;
+                    if(System.IO.File.Exists(absolutePathOfTheImageToDelete) || String.IsNullOrEmpty(myOldProduct.ImagePath) == false )
+                        System.IO.File.Delete(absolutePathOfTheImageToDelete);
+                }
+
+                _productsRepository.Update(p.Product);
+
+                TempData["success"] = "Product was updated successfully";
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = "Product failed to be added. Check your details"; 
+                return RedirectToAction("Edit", new { productId = p.Product.Id });
+            }
+
+        }
+
+
+
+        public IActionResult Checkout(List<OrderItem> productsToBuy, string buttonChoice)
+        {
+            string username = "anonymous";
+
+            try
+            {
+                _ordersRepository.Checkout(productsToBuy, username);
+            }
+            catch (Exception ex)
+            {
+                if(ex.Message.Contains("Not enough"))
+                {
+                    TempData["error"] = ex.Message;
+                }
+                else
+                    TempData["error"] = "Order was not placed. Try again later";
+            }
+
+            return RedirectToAction("Index");
+
+        }
 
 
     }

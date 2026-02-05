@@ -1,0 +1,88 @@
+﻿@model Presentation.Models.ProductsCreateViewModel
+
+<form method="post" action="/Products/Update" class="container mt-4" enctype="multipart/form-data">
+   
+    <input type="hidden" value="@Model.Product.Id" name="Product.Id" />
+    
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text"
+        name="Product.Name"
+        id="Name"
+        class="form-control"
+        value="@Model.Product.Name"
+        />
+    </div>
+
+    <div class="mb-3">
+        <label for="Price" class="form-label">Price (EUR)</label>
+        <input type="number"
+        name="Product.Price"
+        id="Price"
+        step="0.01"
+        class="form-control"
+        value="@Model.Product.Price" />
+    </div>
+
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <textarea name="Product.Description"
+        id="Description"
+        rows="5"
+        class="form-control">
+            @Model.Product.Description
+        </textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="Stock" class="form-label">Stock</label>
+        <input type="number"
+        name="Product.Stock"
+        id="Stock"
+        class="form-control"
+        value="@Model.Product.Stock" />
+    </div>
+
+    <div class="mb-3">
+        <label for="CategoryFK" class="form-label">Category</label>
+        <select name="Product.CategoryFK" class="form-control">
+            <option value="-1">Select Category</option>
+            @foreach (var category in Model.Categories)
+            {
+                if(category.Id == Model.Product.CategoryFK)
+                {
+                    <option selected="selected" value="@category.Id">@category.Name</option>
+                }
+                else
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            }
+        </select>
+
+    </div>
+
+
+    <div>
+        @if (string.IsNullOrEmpty(Model.Product.ImagePath))
+        {
+            <img src="/images/default.jpg" class="img-fluid" style="max-width:200px;" />
+        }
+        else
+        {
+            <img src="@Model.Product.ImagePath" class="img-fluid" style="max-width:200px;" />
+        }
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Upload Image</label>
+        <input type="file"
+               name="ImageFile"
+               class="form-control" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+</form>
