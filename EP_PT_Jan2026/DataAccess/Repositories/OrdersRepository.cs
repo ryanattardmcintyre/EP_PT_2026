@@ -18,6 +18,11 @@ namespace DataAccess.Repositories
             _productsRepository = pr;
         }
 
+        public Order GetOrder(Guid orderId)
+        {
+            return _shoppingCartDbContext.Orders.SingleOrDefault(x => x.Id == orderId);
+        }
+
         private void AddOrderItem(OrderItem oi)
         {
             _shoppingCartDbContext.OrderItems.Add(oi);

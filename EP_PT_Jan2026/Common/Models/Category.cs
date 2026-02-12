@@ -16,5 +16,7 @@ namespace Common.Models
         public string Name { get; set; }
 
         public int Order { get; set; }
+
+         
     }
 }

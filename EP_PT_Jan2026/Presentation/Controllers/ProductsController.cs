@@ -14,6 +14,8 @@ namespace Presentation.Controllers
         public ProductsController(CategoriesRepository categoriesRepository, ProductsRepository productsRepository
             , OrdersRepository ordersRepository) //requesting an instance of type PRODUCTSREPOSITORY
         {
+             
+
             _categoriesRepository = categoriesRepository;
             _productsRepository = productsRepository;
             _ordersRepository = ordersRepository;
@@ -278,24 +280,51 @@ namespace Presentation.Controllers
         {
             string username = "anonymous";
 
-            try
+            if (buttonChoice.ToLower() == "delete")
             {
-                _ordersRepository.Checkout(productsToBuy, username);
-            }
-            catch (Exception ex)
-            {
-                if(ex.Message.Contains("Not enough"))
+                foreach (var oi in productsToBuy)
                 {
-                    TempData["error"] = ex.Message;
+                    if (oi.ProductFK != 0)
+                    {
+                        _productsRepository.Delete(oi.ProductFK);
+                    }
                 }
-                else
-                    TempData["error"] = "Order was not placed. Try again later";
-            }
+                TempData["success"] = "Product(s) deleted successfully";
 
+            }
+            else
+            {
+                try
+                {
+                    List<OrderItem> productsConfirmed = new List<OrderItem>();
+                    foreach (var oi in productsToBuy)
+                    {
+                        if (oi.ProductFK != 0 && oi.Quantity > 0)
+                        {
+                            productsConfirmed.Add(oi);
+                        }
+                    }
+
+                    _ordersRepository.Checkout(productsConfirmed, username);
+
+                    TempData["success"] = "Order was placed successfully";
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("Not enough"))
+                    {
+                        TempData["error"] = ex.Message;
+                    }
+                    else
+                        TempData["error"] = "Order was not placed. Try again later";
+                }
+            }
             return RedirectToAction("Index");
 
         }
 
+
+       
 
     }
 }
