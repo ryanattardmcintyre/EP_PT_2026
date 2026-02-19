@@ -3,15 +3,16 @@ using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Presentation.Models;
+using Common.Interfaces;
 
 namespace Presentation.Controllers
 {
     public class ProductsController : Controller
     {
         private CategoriesRepository _categoriesRepository;
-        private ProductsRepository _productsRepository;
+        private IProductsRepository _productsRepository;
         private OrdersRepository _ordersRepository;
-        public ProductsController(CategoriesRepository categoriesRepository, ProductsRepository productsRepository
+        public ProductsController(CategoriesRepository categoriesRepository, IProductsRepository productsRepository
             , OrdersRepository ordersRepository) //requesting an instance of type PRODUCTSREPOSITORY
         {
              

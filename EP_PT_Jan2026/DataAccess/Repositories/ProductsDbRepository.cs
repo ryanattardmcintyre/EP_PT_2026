@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using Common.Interfaces;
+using Common.Models;
 using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class ProductsRepository
+    public class ProductsDbRepository: IProductsRepository
     {
 
         //Dependency Injection
@@ -22,7 +23,7 @@ namespace DataAccess.Repositories
 
         //ProductsRepository = the client 
         //ShoppingCartDbContext = the service
-        public ProductsRepository(ShoppingCartDbContext myContext) {
+        public ProductsDbRepository(ShoppingCartDbContext myContext) {
             _myContext = myContext;
         }
 

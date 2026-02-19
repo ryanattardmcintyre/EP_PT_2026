@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using Common.Interfaces;
+using Common.Models;
 using DataAccess.Context;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace DataAccess.Repositories
     public  class OrdersRepository
     {
         private ShoppingCartDbContext _shoppingCartDbContext;
-        private ProductsRepository _productsRepository;
-        public OrdersRepository(ShoppingCartDbContext context, ProductsRepository pr) {
+        private IProductsRepository _productsRepository;
+        public OrdersRepository(ShoppingCartDbContext context, IProductsRepository pr) {
 
             _shoppingCartDbContext = context;
             _productsRepository = pr;

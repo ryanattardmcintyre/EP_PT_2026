@@ -2,6 +2,8 @@ using DataAccess.Context;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Common.Interfaces;
+using System.Reflection.Metadata.Ecma335;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,34 @@ builder.Services.AddControllersWithViews();
 //Singleton Service => one instance to be shared by everyone
 
 //builder.Services.AddScoped(typeof(ProductsRepository));
-builder.Services.AddScoped<ProductsRepository>();
+
+
+string productsFilePath = builder.Configuration["productJsonPath"].ToString();
+ 
+string implementationChoice = builder.Configuration["dataSource"].ToString();
+
+var host = builder.Environment;
+string absoluteProductsFilePath =
+    Path.Combine(host.ContentRootPath, productsFilePath);
+
 builder.Services.AddScoped<CategoriesRepository>();
+ 
+switch (implementationChoice)
+{
+    case "db":
+        builder.Services.AddScoped<IProductsRepository, ProductsDbRepository>();
+        break;
+
+    case "json":
+        builder.Services.AddScoped<IProductsRepository,
+            ProductsFileRepository>(options => { return new ProductsFileRepository(absoluteProductsFilePath); });
+        break;
+
+    case "cache":
+        builder.Services.AddMemoryCache();
+        builder.Services.AddScoped<IProductsRepository, ProductsCacheRepository>();
+        break;
+}
 builder.Services.AddScoped<OrdersRepository>();
 
 var app = builder.Build();
