@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Common.Interfaces;
 using System.Reflection.Metadata.Ecma335;
+using DataAccess.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,8 +33,10 @@ var host = builder.Environment;
 string absoluteProductsFilePath =
     Path.Combine(host.ContentRootPath, productsFilePath);
 
+// DI with Interfaces
+// Choosing Implementation A OR B OR C
 builder.Services.AddScoped<CategoriesRepository>();
- 
+
 switch (implementationChoice)
 {
     case "db":
@@ -50,7 +53,21 @@ switch (implementationChoice)
         builder.Services.AddScoped<IProductsRepository, ProductsCacheRepository>();
         break;
 }
-builder.Services.AddScoped<OrdersRepository>();
+
+
+
+//DI with Interfaces using KEYED SCOPED
+//Inject Implementation A AND B
+//Ex1
+builder.Services.AddKeyedScoped<IOrdersRepository, OrdersRepository>("db");
+builder.Services.AddKeyedScoped<IOrdersRepository, OrdersCacheRepository>("cache");
+//Ex2
+builder.Services.AddKeyedScoped<IPriceCalculation, VatCalculation>("vat");
+builder.Services.AddKeyedScoped<IPriceCalculation, BlackFridayCalculation>("blackFriday");
+
+//DI - scoped service
+
+//builder.Services.AddScoped<OrdersRepository>();
 
 var app = builder.Build();
 

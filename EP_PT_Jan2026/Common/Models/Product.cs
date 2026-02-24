@@ -44,5 +44,7 @@ namespace Common.Models
 
         public string? ImagePath { get; set; }
 
+        public bool Discount { get; set; }
+
     }
 }

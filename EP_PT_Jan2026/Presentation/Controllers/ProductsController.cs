@@ -11,9 +11,10 @@ namespace Presentation.Controllers
     {
         private CategoriesRepository _categoriesRepository;
         private IProductsRepository _productsRepository;
-        private OrdersRepository _ordersRepository;
-        public ProductsController(CategoriesRepository categoriesRepository, IProductsRepository productsRepository
-            , OrdersRepository ordersRepository) //requesting an instance of type PRODUCTSREPOSITORY
+        private IOrdersRepository _ordersRepository;
+        public ProductsController(CategoriesRepository categoriesRepository, 
+            IProductsRepository productsRepository
+            , [FromKeyedServices("cache")] IOrdersRepository ordersRepository) //requesting an instance of type PRODUCTSREPOSITORY
         {
              
 
@@ -276,7 +277,7 @@ namespace Presentation.Controllers
         }
 
 
-
+         //AddToCart OR Delete
         public IActionResult Checkout(List<OrderItem> productsToBuy, string buttonChoice)
         {
             string username = "anonymous";
@@ -293,7 +294,7 @@ namespace Presentation.Controllers
                 TempData["success"] = "Product(s) deleted successfully";
 
             }
-            else
+            else    //AddToCart
             {
                 try
                 {
@@ -306,7 +307,7 @@ namespace Presentation.Controllers
                         }
                     }
 
-                    _ordersRepository.Checkout(productsConfirmed, username);
+                    _ordersRepository.Checkout(productsConfirmed, username); //<< added in cache!
 
                     TempData["success"] = "Order was placed successfully";
                 }

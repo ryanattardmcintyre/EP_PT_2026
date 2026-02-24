@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public  class OrdersRepository
+    public  class OrdersRepository: IOrdersRepository
     {
         private ShoppingCartDbContext _shoppingCartDbContext;
         private IProductsRepository _productsRepository;
@@ -56,7 +56,7 @@ namespace DataAccess.Repositories
                 {
                     evaluatedProduct.Stock -= oi.Quantity;
                 }
-                myOrder.FinalPrice += (evaluatedProduct.Price * oi.Quantity);
+                myOrder.FinalPrice += (oi.Price);
                 oi.OrderFK = myOrder.Id;
                 AddOrderItem(oi);
             }
