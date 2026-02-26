@@ -20,13 +20,24 @@ namespace DataAccess.Repositories
 
         public void Checkout(List<OrderItem> orderItems, string username)
         {
-            _db.Set<List<OrderItem>>(username, orderItems);
+            var list = Get(username);
+            if (list != null)
+                list.AddRange(orderItems);
+            else
+                list = orderItems;
+
+            _db.Set<List<OrderItem>>(username, list);
 
         }
 
         public List<OrderItem> Get(string username)
         {
             return _db.Get<List<OrderItem>>(username);
+        }
+
+        public void ClearCache(string username)
+        {
+            _db.Remove(username);
         }
     }
 }

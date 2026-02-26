@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Common.Interfaces;
 using System.Reflection.Metadata.Ecma335;
 using DataAccess.Utilities;
+using DataAccess.Factory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ string absoluteProductsFilePath =
 // DI with Interfaces
 // Choosing Implementation A OR B OR C
 builder.Services.AddScoped<CategoriesRepository>();
+builder.Services.AddScoped<NotificationFactory>();
 
 switch (implementationChoice)
 {
