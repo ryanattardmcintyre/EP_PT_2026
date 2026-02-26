@@ -25,11 +25,7 @@ namespace DataAccess.Utilities
         public double Calculate(int productId)
         {
             var myProduct = _productsRepository.Get(productId);
-            if (myProduct.Discount == true)
-            {
-                return myProduct.Price * DiscountPercentage;
-            }
-            else return myProduct.Price;
+            return myProduct.Price * DiscountPercentage; //returns the discount
         }
     }
 }

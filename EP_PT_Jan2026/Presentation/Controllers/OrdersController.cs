@@ -1,4 +1,5 @@
 ﻿using Common.Interfaces;
+using Common.Models;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
@@ -14,20 +15,21 @@ namespace Presentation.Controllers
         private IPriceCalculation _blackFridayCalculation;
 
         public OrdersController(
-        [FromKeyedServices("db")] OrdersRepository ordersDbRepository,
-        [FromKeyedServices("cache")] OrdersCacheRepository ordersCacheRepository,
+        [FromKeyedServices("db")] IOrdersRepository ordersDbRepository,
+        [FromKeyedServices("cache")] IOrdersRepository ordersCacheRepository,
+
         [FromKeyedServices("vat")] IPriceCalculation vatCalculation,
         [FromKeyedServices("blackFriday")] IPriceCalculation blackFridayCalculation
             )
         {
-            _ordersCacheRepository = ordersCacheRepository;
-            _ordersDbRepository = ordersDbRepository;
+            _ordersCacheRepository = (OrdersCacheRepository) ordersCacheRepository;
+            _ordersDbRepository = (OrdersRepository) ordersDbRepository;
 
             _vatCalculation = vatCalculation;
             _blackFridayCalculation = blackFridayCalculation;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices] IProductsRepository productsRepository)
         {
             string username = "anonymous";
 
@@ -41,6 +43,7 @@ namespace Presentation.Controllers
 
             foreach(var oi in list)
             {
+                oi.Product = productsRepository.Get(oi.ProductFK);
                 myModel.Add(new ShoppingCartViewModel()
                 {
                     OrderItem = oi,
@@ -50,7 +53,7 @@ namespace Presentation.Controllers
             }
 
             //and preview on screen
-            return View(list);
+            return View(myModel);
         }
 
         public IActionResult Commit()
@@ -67,11 +70,13 @@ namespace Presentation.Controllers
 
             foreach (var oi in list)
             {
-                oi.Price += (_vatCalculation.Calculate(oi.ProductFK)) * oi.Quantity;
                 oi.Price -= _blackFridayCalculation.Calculate(oi.ProductFK) * oi.Quantity;
+                oi.Price += (_vatCalculation.Calculate(oi.ProductFK)) * oi.Quantity;
             }
 
             _ordersDbRepository.Checkout(list, username);
+            TempData["success"] = "Order was placed successfully";
+            _ordersCacheRepository.Checkout(new List<OrderItem>(), username);
 
             return RedirectToAction("Index", "Products");
 

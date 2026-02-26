@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Presentation.Models.ShoppingCartViewModel>
+
+@{
+    double total = 0;
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0">Cart Summary</h4>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Product</th>
+                    <th class="text-end">Price (€)</th>
+                    <th class="text-end">Discount (€)</th>
+                    <th class="text-end">VAT (€)</th>
+                    <th class="text-end">Final (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var basePrice = item.OrderItem.Product.Price;
+                    var discount = item.Discount;
+                    var vat = item.VAT;
+
+                    var finalProductPrice = (basePrice*item.OrderItem.Quantity) - discount + vat;
+                    total += finalProductPrice;
+
+                    <tr>
+                        <td>@item.OrderItem.Product.Name</td>
+                        <td class="text-end">@basePrice.ToString("0.00")</td>
+                        <td class="text-end text-danger">- @discount.ToString("0.00")</td>
+                        <td class="text-end text-success">+ @vat.ToString("0.00")</td>
+                        <td class="text-end fw-bold">@finalProductPrice.ToString("0.00")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer text-end">
+        <h5 class="mb-0">
+            Total: <span class="fw-bold">€ @total.ToString("0.00")</span>
+        </h5>
+    </div>
+</div>
+
+<form method="post" action="/Orders/Commit">
+    <input type="submit" class="btn btn-danger" value="Pay"/>
+</form>

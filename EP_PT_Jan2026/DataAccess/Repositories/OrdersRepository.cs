@@ -44,7 +44,8 @@ namespace DataAccess.Repositories
             myOrder.DataPlaced = DateTime.Now;
             myOrder.FinalPrice = 0;
             myOrder.Id = Guid.NewGuid();
-
+            AddOrder(myOrder);
+            
             foreach (OrderItem oi in orderItems)
             {
                 var evaluatedProduct = _productsRepository.Get(oi.ProductFK);
@@ -57,11 +58,17 @@ namespace DataAccess.Repositories
                     evaluatedProduct.Stock -= oi.Quantity;
                 }
                 myOrder.FinalPrice += (oi.Price);
-                oi.OrderFK = myOrder.Id;
-                AddOrderItem(oi);
-            }
 
-            AddOrder(myOrder);
+                
+                oi.OrderFK = myOrder.Id;
+                AddOrderItem(new OrderItem() { 
+                         OrderFK = myOrder.Id, 
+                         Price = oi.Price,
+                         ProductFK = oi.ProductFK,
+                         Quantity = oi.Quantity
+                         
+                });
+            }
  
             _shoppingCartDbContext.SaveChanges();
         }
