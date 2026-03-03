@@ -1,4 +1,5 @@
 ﻿using Common.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,7 +19,7 @@ namespace DataAccess.Context
 
     //IdentityDbContext -> DbContext : but you get an upgrade - it creates the tables that allows us
     //                                 to manage user accounts
-    public class ShoppingCartDbContext: IdentityDbContext
+    public class ShoppingCartDbContext: IdentityDbContext<CustomUser>
     {
         public ShoppingCartDbContext(DbContextOptions<ShoppingCartDbContext> options):  base(options)
         { }

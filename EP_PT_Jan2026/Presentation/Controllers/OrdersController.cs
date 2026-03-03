@@ -2,6 +2,7 @@
 using Common.Models;
 using DataAccess.Factory;
 using DataAccess.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
 
@@ -30,9 +31,11 @@ namespace Presentation.Controllers
             _blackFridayCalculation = blackFridayCalculation;
         }
 
+        [Authorize] //it enforces that the user is logged in (hence non-anonymous) prior to accessing this method
         public IActionResult Index([FromServices] IProductsRepository productsRepository)
-        {
-            string username = "anonymous";
+        { 
+            
+            string username = User.Identity.Name; //this will give me the email address
 
             //read the products already in cart/cache
 
@@ -57,11 +60,13 @@ namespace Presentation.Controllers
             return View(myModel);
         }
 
+        [Authorize]
         public IActionResult Commit([FromServices] NotificationFactory factory, [FromServices] IProductsRepository productsRepository)
         {
+
             //read from cache
             //save in db
-            string username = "anonymous";
+            string username = User.Identity.Name;
 
             //read the products already in cart/cache
 

@@ -280,7 +280,7 @@ namespace Presentation.Controllers
          //AddToCart OR Delete
         public IActionResult Checkout(List<OrderItem> productsToBuy, string buttonChoice)
         {
-            string username = "anonymous";
+            string username = User.Identity.Name;
 
             if (buttonChoice.ToLower() == "delete")
             {

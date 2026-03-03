@@ -33,14 +33,20 @@
 <hr />
 
 
-    <form method="post" action="/Products/Checkout">
-      
+<form method="post" action="/Products/Checkout">
 
-    
-                <div class="d-flex gap-2">
-                    <input type="submit" value="Add To Cart" class="btn btn-secondary" name="buttonChoice" />
-                    <input type="submit" value="Delete" class="btn btn-danger" name="buttonChoice" />
-                </div>
+
+
+    <div class="d-flex gap-2">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <input type="submit" value="Add To Cart" class="btn btn-secondary" name="buttonChoice" />
+            @if (User.IsInRole("Admin"))
+            {
+                <input type="submit" value="Delete" class="btn btn-danger" name="buttonChoice" />
+            }
+        }
+    </div>
            
     <div class="row row-cols-1 row-cols-md-3 g-4">
             @for (int i = 0; i < Model.Products.Count; i++)
