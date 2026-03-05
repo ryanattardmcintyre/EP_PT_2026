@@ -1,12 +1,16 @@
 ﻿@model Presentation.Models.ProductsCreateViewModel
 
 <form method="post" action="/Products/Submit" class="container mt-4" enctype="multipart/form-data" >
+    
+    @Html.ValidationSummary(false, "")
+    
     <div class="mb-3">
         <label for="Name" class="form-label">Name</label>
         <input type="text"
         name="Product.Name"
         id="Name"
         class="form-control" />
+        <span asp-validation-for="Product.Name"></span>
     </div>
 
     <div class="mb-3">

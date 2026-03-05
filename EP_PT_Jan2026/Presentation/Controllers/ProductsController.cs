@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Presentation.Models;
 using Common.Interfaces;
+using Presentation.ActionFilters;
 
 namespace Presentation.Controllers
 {
@@ -68,6 +69,7 @@ namespace Presentation.Controllers
         //7. response < data
 
         [HttpGet]
+        [ServiceFilter(typeof(ProductCreateValidationFilter))]
         public IActionResult Create() //this is triggered upon the user clicks the link Create
         {
             var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
@@ -87,12 +89,26 @@ namespace Presentation.Controllers
         //revise registration of CategoriesRepository....
 
         [HttpPost]
+        [ServiceFilter(typeof(ProductCreateValidationFilter))]
         public IActionResult Submit(ProductsCreateViewModel p, [FromServices] IWebHostEnvironment host)
         {
             //Add the product keyed in by the user into the database
             //note: no LINQ code
             try
             {
+
+                if(ModelState.IsValid == false)
+                {
+                    var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+
+                    ProductsCreateViewModel myModel = new ProductsCreateViewModel();
+                    myModel.Categories = myPreparedSqlOfCategories.ToList(); //opens connection - gets data - closes connection
+                                                                             //myModel.Product = new Product();
+                    myModel.Product = p.Product;
+
+                    return View("Create",myModel);
+                }
+
                 if (p.ImageFile != null)
                 {
                     string uniqueFilename = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(p.ImageFile.FileName);
@@ -123,7 +139,14 @@ namespace Presentation.Controllers
                 //log ex.Message
                 TempData["error"] = "Product failed to be added";
 
-                return View("Create");
+                var myPreparedSqlOfCategories = _categoriesRepository.GetCategories();
+
+                ProductsCreateViewModel myModel = new ProductsCreateViewModel();
+                myModel.Categories = myPreparedSqlOfCategories.ToList(); //opens connection - gets data - closes connection
+                                                                         //myModel.Product = new Product();
+                myModel.Product = p.Product;
+
+                return View("Create", myModel);
             }
 
         }

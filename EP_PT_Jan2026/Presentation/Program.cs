@@ -7,6 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 using DataAccess.Utilities;
 using DataAccess.Factory;
 using Common.Models;
+using Presentation.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,8 @@ builder.Services.AddDbContext<ShoppingCartDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<CustomUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services
+    .AddDefaultIdentity<CustomUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ShoppingCartDbContext>();
 
 builder.Services.AddControllersWithViews();
@@ -70,7 +72,7 @@ builder.Services.AddKeyedScoped<IPriceCalculation, BlackFridayCalculation>("blac
 
 //DI - scoped service
 
-//builder.Services.AddScoped<OrdersRepository>();
+builder.Services.AddScoped<ProductCreateValidationFilter>();
 
 var app = builder.Build();
 
