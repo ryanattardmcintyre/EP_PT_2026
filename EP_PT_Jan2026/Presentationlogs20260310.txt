@@ -1,0 +1,236 @@
+2026-03-10 17:59:05.352 +01:00 [INF] User profile is available. Using 'C:\Users\Ryan\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-10 17:59:06.496 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:06.496 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:06.571 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-10 17:59:06.571 +01:00 [INF] Hosting environment: Development
+2026-03-10 17:59:06.571 +01:00 [INF] Content root path: C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation
+2026-03-10 17:59:07.769 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:07.931 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:09.819 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:10.012 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/ - null null
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.567 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreateProductCapability], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-03-10 17:59:10.959 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:10.959 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:10.965 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:10.970 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:10.970 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:10.970 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.037 +01:00 [INF] Executing endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.064 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Presentation.Controllers.HomeController (Presentation).
+2026-03-10 17:59:11.092 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.093 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.093 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.093 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.093 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.093 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:11.410 +01:00 [INF] Executed ViewResult - view Index executed in 327.0668ms.
+2026-03-10 17:59:11.410 +01:00 [INF] Executed ViewResult - view Index executed in 326.9197ms.
+2026-03-10 17:59:11.410 +01:00 [INF] Executed ViewResult - view Index executed in 327.0357ms.
+2026-03-10 17:59:11.410 +01:00 [INF] Executed ViewResult - view Index executed in 326.8004ms.
+2026-03-10 17:59:11.410 +01:00 [INF] Executed ViewResult - view Index executed in 327.0461ms.
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.1762ms
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.1754ms
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.1647ms
+2026-03-10 17:59:11.414 +01:00 [INF] Executed ViewResult - view Index executed in 336.8075ms.
+2026-03-10 17:59:11.414 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.1492ms
+2026-03-10 17:59:11.414 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.415 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.1809ms
+2026-03-10 17:59:11.414 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.414 +01:00 [INF] Executed action Presentation.Controllers.HomeController.Index (Presentation) in 348.9434ms
+2026-03-10 17:59:11.415 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.415 +01:00 [INF] Executed endpoint 'Presentation.Controllers.HomeController.Index (Presentation)'
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 1435.3165ms
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 1627.4423ms
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 3676.7573ms
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 4966.4168ms
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 4966.3785ms
+2026-03-10 17:59:11.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/ - 200 null text/html; charset=utf-8 3514.6174ms
+2026-03-10 17:59:11.449 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2026-03-10 17:59:11.462 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/Presentation.styles.css?v=AvXc7vh_EdyYQwMPoPkRhaO0gZs1DQfX5bujsKqQ2LA - null null
+2026-03-10 17:59:11.464 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - null null
+2026-03-10 17:59:11.477 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-10 17:59:11.483 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - null null
+2026-03-10 17:59:11.484 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/lib/jquery/dist/jquery.min.js - null null
+2026-03-10 17:59:11.488 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_vs/browserLink - null null
+2026-03-10 17:59:11.495 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2026-03-10 17:59:11.498 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 22.493ms
+2026-03-10 17:59:11.539 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\js\site.js'
+2026-03-10 17:59:11.540 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2026-03-10 17:59:11.539 +01:00 [INF] Sending file. Request path: '/Presentation.styles.css'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\obj\Debug\net8.0\scopedcss\bundle\Presentation.styles.css'
+2026-03-10 17:59:11.540 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\css\site.css'
+2026-03-10 17:59:11.540 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/Presentation.styles.css?v=AvXc7vh_EdyYQwMPoPkRhaO0gZs1DQfX5bujsKqQ2LA - 200 1130 text/css 78.0874ms
+2026-03-10 17:59:11.540 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - 200 231 text/javascript 76.1728ms
+2026-03-10 17:59:11.540 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - 200 362 text/css 59.017ms
+2026-03-10 17:59:11.553 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/lib/bootstrap/dist/css/bootstrap.min.css - 200 162720 text/css 105.0253ms
+2026-03-10 17:59:11.640 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_vs/browserLink - 200 null text/javascript; charset=UTF-8 155.9353ms
+2026-03-10 17:59:11.667 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2026-03-10 17:59:11.674 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 200 78468 text/javascript 178.2458ms
+2026-03-10 17:59:11.756 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\lib\jquery\dist\jquery.min.js'
+2026-03-10 17:59:11.759 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/lib/jquery/dist/jquery.min.js - 200 89501 text/javascript 275.6978ms
+2026-03-10 17:59:11.837 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/favicon.ico - null null
+2026-03-10 17:59:11.859 +01:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\favicon.ico'
+2026-03-10 17:59:11.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/favicon.ico - 200 5430 image/x-icon 23.3595ms
+2026-03-10 17:59:15.947 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/Products - null null
+2026-03-10 17:59:15.954 +01:00 [INF] Executing endpoint 'Presentation.Controllers.ProductsController.Index (Presentation)'
+2026-03-10 17:59:15.969 +01:00 [INF] Route matched with {action = "Index", controller = "Products", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32, Int32) on controller Presentation.Controllers.ProductsController (Presentation).
+2026-03-10 17:59:16.090 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 17:59:16.091 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 17:59:16.188 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+    SELECT [p].[Id]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+2026-03-10 17:59:16.206 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 17:59:16.206 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 17:59:16.241 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-03-10 17:59:16.329 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Order]
+FROM [Categories] AS [c]
+ORDER BY [c].[Order]
+2026-03-10 17:59:16.363 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:16.456 +01:00 [INF] Executed ViewResult - view Index executed in 94.4022ms.
+2026-03-10 17:59:16.456 +01:00 [INF] Executed action Presentation.Controllers.ProductsController.Index (Presentation) in 486.9516ms
+2026-03-10 17:59:16.456 +01:00 [INF] Executed endpoint 'Presentation.Controllers.ProductsController.Index (Presentation)'
+2026-03-10 17:59:16.459 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/Products - 200 null text/html; charset=utf-8 511.6083ms
+2026-03-10 17:59:16.487 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/images/99d63279-abfb-4195-a49d-1bdc545fe1ed.jpg - null null
+2026-03-10 17:59:16.494 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/images/default.jpg - null null
+2026-03-10 17:59:16.501 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_vs/browserLink - null null
+2026-03-10 17:59:16.501 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-10 17:59:16.502 +01:00 [INF] Sending file. Request path: '/images/99d63279-abfb-4195-a49d-1bdc545fe1ed.jpg'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\images\99d63279-abfb-4195-a49d-1bdc545fe1ed.jpg'
+2026-03-10 17:59:16.502 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/images/99d63279-abfb-4195-a49d-1bdc545fe1ed.jpg - 200 9179 image/jpeg 14.9073ms
+2026-03-10 17:59:16.502 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 1.4332ms
+2026-03-10 17:59:16.538 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.1314ms
+2026-03-10 17:59:16.548 +01:00 [INF] Sending file. Request path: '/images/default.jpg'. Physical path: 'C:\Users\Ryan\source\repos\EP_PT_2026\EP_PT_Jan2026\Presentation\wwwroot\images\default.jpg'
+2026-03-10 17:59:16.549 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/images/default.jpg - 200 9077 image/jpeg 54.9157ms
+2026-03-10 17:59:30.135 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44368/Products/Checkout - application/x-www-form-urlencoded 245
+2026-03-10 17:59:30.147 +01:00 [INF] Executing endpoint 'Presentation.Controllers.ProductsController.Checkout (Presentation)'
+2026-03-10 17:59:30.182 +01:00 [INF] Route matched with {action = "Checkout", controller = "Products", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Checkout(System.Collections.Generic.List`1[Common.Models.OrderItem], System.String) on controller Presentation.Controllers.ProductsController (Presentation).
+2026-03-10 17:59:30.291 +01:00 [INF] Executing RedirectResult, redirecting to /Products.
+2026-03-10 17:59:30.301 +01:00 [INF] Executed action Presentation.Controllers.ProductsController.Checkout (Presentation) in 119.1158ms
+2026-03-10 17:59:30.302 +01:00 [INF] Executed endpoint 'Presentation.Controllers.ProductsController.Checkout (Presentation)'
+2026-03-10 17:59:30.307 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44368/Products/Checkout - 302 null null 172.9818ms
+2026-03-10 17:59:30.311 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/Products - null null
+2026-03-10 17:59:30.316 +01:00 [INF] Executing endpoint 'Presentation.Controllers.ProductsController.Index (Presentation)'
+2026-03-10 17:59:30.316 +01:00 [INF] Route matched with {action = "Index", controller = "Products", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32, Int32) on controller Presentation.Controllers.ProductsController (Presentation).
+2026-03-10 17:59:30.330 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+    SELECT [p].[Id]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+2026-03-10 17:59:30.332 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-03-10 17:59:30.336 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Order]
+FROM [Categories] AS [c]
+ORDER BY [c].[Order]
+2026-03-10 17:59:30.338 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:30.344 +01:00 [INF] Executed ViewResult - view Index executed in 6.2833ms.
+2026-03-10 17:59:30.344 +01:00 [INF] Executed action Presentation.Controllers.ProductsController.Index (Presentation) in 27.6371ms
+2026-03-10 17:59:30.344 +01:00 [INF] Executed endpoint 'Presentation.Controllers.ProductsController.Index (Presentation)'
+2026-03-10 17:59:30.345 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/Products - 200 null text/html; charset=utf-8 33.8197ms
+2026-03-10 17:59:30.366 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_vs/browserLink - null null
+2026-03-10 17:59:30.369 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-10 17:59:30.376 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 1.9942ms
+2026-03-10 17:59:30.387 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.2156ms
+2026-03-10 17:59:37.079 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/Orders/Index - null null
+2026-03-10 17:59:37.095 +01:00 [INF] Executing endpoint 'Presentation.Controllers.OrdersController.Index (Presentation)'
+2026-03-10 17:59:37.099 +01:00 [INF] Route matched with {action = "Index", controller = "Orders", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Common.Interfaces.IProductsRepository) on controller Presentation.Controllers.OrdersController (Presentation).
+2026-03-10 17:59:46.780 +01:00 [INF] joeborg1@gmail.com has accessed the shopping cart
+2026-03-10 17:59:48.759 +01:00 [INF] joeborg1@gmail.com retrieved 1 items from the shopping cart
+2026-03-10 17:59:52.931 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2026-03-10 17:59:52.934 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2026-03-10 17:59:52.936 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2026-03-10 17:59:52.937 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2026-03-10 17:59:52.938 +01:00 [FTL] VAT for 10 with qty 1 was calcuated to be 10.7982 
+2026-03-10 17:59:52.939 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryFK], [p].[Description], [p].[Discount], [p].[ImagePath], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2026-03-10 17:59:52.939 +01:00 [FTL] Discount for 10 with qty 1 was calcuated to be 29.995 
+2026-03-10 17:59:56.964 +01:00 [INF] Executing ViewResult, running view Index.
+2026-03-10 17:59:56.973 +01:00 [INF] Executed ViewResult - view Index executed in 9.8743ms.
+2026-03-10 17:59:56.973 +01:00 [INF] Executed action Presentation.Controllers.OrdersController.Index (Presentation) in 19873.5465ms
+2026-03-10 17:59:56.973 +01:00 [INF] Executed endpoint 'Presentation.Controllers.OrdersController.Index (Presentation)'
+2026-03-10 17:59:56.973 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/Orders/Index - 200 null text/html; charset=utf-8 19894.6069ms
+2026-03-10 17:59:56.987 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_vs/browserLink - null null
+2026-03-10 17:59:56.988 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-10 17:59:56.995 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 2.8242ms
+2026-03-10 17:59:57.003 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44368/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.7026ms

@@ -1,0 +1,8 @@
+2026-03-10 18:35:12.614 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 18:35:12.662 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 18:35:13.565 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 18:35:13.565 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-03-10 18:35:22.616 +01:00 [INF] joeborg1@gmail.com has accessed the shopping cart
+2026-03-10 18:35:22.617 +01:00 [INF] joeborg1@gmail.com retrieved 1 items from the shopping cart
+2026-03-10 18:35:22.729 +01:00 [WRN] VAT for 10 with qty 1 was calcuated to be 10.7982 
+2026-03-10 18:35:22.729 +01:00 [WRN] Discount for 10 with qty 1 was calcuated to be 29.995 

@@ -11,53 +11,68 @@ namespace Presentation.Controllers
     public class OrdersController : Controller
     {
         private OrdersCacheRepository _ordersCacheRepository;
-        private OrdersRepository _ordersDbRepository;
+        private IOrdersRepository _ordersDbRepository;
 
         private IPriceCalculation _vatCalculation;
         private IPriceCalculation _blackFridayCalculation;
 
+        private ILogger<OrdersController> _logger;
         public OrdersController(
-        [FromKeyedServices("db")] IOrdersRepository ordersDbRepository,
+        [FromKeyedServices("logging")] IOrdersRepository ordersDbRepository,
         [FromKeyedServices("cache")] IOrdersRepository ordersCacheRepository,
 
         [FromKeyedServices("vat")] IPriceCalculation vatCalculation,
-        [FromKeyedServices("blackFriday")] IPriceCalculation blackFridayCalculation
+        [FromKeyedServices("blackFriday")] IPriceCalculation blackFridayCalculation,
+
+        ILogger<OrdersController> logger
             )
         {
             _ordersCacheRepository = (OrdersCacheRepository) ordersCacheRepository;
-            _ordersDbRepository = (OrdersRepository) ordersDbRepository;
+            _ordersDbRepository =  ordersDbRepository;
 
             _vatCalculation = vatCalculation;
             _blackFridayCalculation = blackFridayCalculation;
+
+            _logger = logger;
         }
 
         [Authorize] //it enforces that the user is logged in (hence non-anonymous) prior to accessing this method
         public IActionResult Index([FromServices] IProductsRepository productsRepository)
-        { 
-            
-            string username = User.Identity.Name; //this will give me the email address
-
-            //read the products already in cart/cache
-
-            var list  = _ordersCacheRepository.Get(username);
-
-            //work out the latest prices with discounts
-
-            List<ShoppingCartViewModel> myModel = new List<ShoppingCartViewModel>();
-
-            foreach(var oi in list)
+        {
+            try
             {
-                oi.Product = productsRepository.Get(oi.ProductFK);
-                myModel.Add(new ShoppingCartViewModel()
-                {
-                    OrderItem = oi,
-                    VAT = (_vatCalculation.Calculate(oi.ProductFK)) * oi.Quantity,
-                    Discount = _blackFridayCalculation.Calculate(oi.ProductFK) * oi.Quantity
-                });
-            }
+                string username = User.Identity.Name; //this will give me the email address
+                _logger.LogInformation($"{username} has accessed the shopping cart");
+                //read the products already in cart/cache
 
-            //and preview on screen
-            return View(myModel);
+                var list = _ordersCacheRepository.Get(username);
+                _logger.LogInformation($"{username} retrieved {list.Count} items from the shopping cart");
+                //work out the latest prices with discounts
+
+                List<ShoppingCartViewModel> myModel = new List<ShoppingCartViewModel>();
+
+                foreach (var oi in list)
+                {
+                    oi.Product = productsRepository.Get(oi.ProductFK);
+                    myModel.Add(new ShoppingCartViewModel()
+                    {
+                        OrderItem = oi,
+                        VAT = (_vatCalculation.Calculate(oi.ProductFK)) * oi.Quantity,
+                        Discount = _blackFridayCalculation.Calculate(oi.ProductFK) * oi.Quantity
+                    });
+                    _logger.LogWarning($"VAT for {oi.ProductFK} with qty {oi.Quantity} was calcuated to be {(_vatCalculation.Calculate(oi.ProductFK)) * oi.Quantity} ");
+                    _logger.LogWarning($"Discount for {oi.ProductFK} with qty {oi.Quantity} was calcuated to be {_blackFridayCalculation.Calculate(oi.ProductFK) * oi.Quantity} ");
+                }
+                return View(myModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message, null);
+                TempData["error"] = "Could not load your cart. We've taken note of the error. Try again later";
+                return RedirectToAction("Index", "Products");
+            }
+            
+         
         }
 
         [Authorize]

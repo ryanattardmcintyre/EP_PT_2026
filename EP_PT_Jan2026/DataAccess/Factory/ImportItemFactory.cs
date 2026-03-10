@@ -25,11 +25,39 @@ namespace DataAccess.Factory
 
 
     public interface IItemValidating
-    { }
+    {
+        public string GetValidators();
+        public string GetCardPartial();
+    }
 
-    public class Restaurant:IItemValidating
-    { }
+    public class Restaurant : IItemValidating
+    {
+        public string GetCardPartial()
+        {
+            return "RestaurantPartial.cshtml";
+        }
 
-    public class MenuItem:IItemValidating
-    { }
+        public string GetValidators()
+        {
+            return "admin@site.com";
+        }
+
+
+        public string Title { get; set; }
+    }
+
+    public class MenuItem : IItemValidating
+    {
+
+        public string RestaurantOwner { get; set; }
+        public string GetCardPartial()
+        {
+            return "MenuItemPartial.cshtml";
+        }
+
+        public string GetValidators()
+        {
+            return RestaurantOwner;
+        }
+    }
 }
