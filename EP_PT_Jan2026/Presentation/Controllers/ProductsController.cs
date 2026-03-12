@@ -96,6 +96,9 @@ namespace Presentation.Controllers
             //note: no LINQ code
             try
             {
+                ModelState.Remove("ImageFile");
+                ModelState.Remove("Product.Category");
+                ModelState.Remove("Categories");
 
                 if(ModelState.IsValid == false)
                 {

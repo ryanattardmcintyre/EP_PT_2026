@@ -87,6 +87,7 @@ builder.Services.AddKeyedScoped<IPriceCalculation, BlackFridayCalculation>("blac
 builder.Services.AddScoped<ProductCreateValidationFilter>();
 
 
+
 string logAbsolutePath = host.ContentRootPath + "\\logs.txt";
 
 Log.Logger = new LoggerConfiguration()
@@ -102,6 +103,8 @@ builder.Host.UseSerilog();
 
 
 var app = builder.Build();
+
+ 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
